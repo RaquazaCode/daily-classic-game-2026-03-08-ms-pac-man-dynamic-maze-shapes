@@ -1,17 +1,12 @@
 # daily-classic-game-2026-03-08-ms-pac-man-dynamic-maze-shapes
 
 <div align="center">
-  <p>Deterministic Ms. Pac-Man-inspired maze chase with dynamic maze-shape phase shifts and automation-safe browser hooks.</p>
+  <p>Deterministic Ms. Pac-Man-inspired maze chase with phase-shifting corridors and reproducible ghost behavior.</p>
 </div>
 
 <div align="center">
-  <p><strong>Media</strong>: Playwright screenshots and text captures are stored in <code>artifacts/playwright/</code>.</p>
+  <p><strong>Media</strong>: Playwright screenshots, action payload, and render text output are in <code>artifacts/playwright/</code>.</p>
 </div>
-
-## GIF Captures
-- Clip 1 - Opening Route: `artifacts/playwright/clip-opening.gif`
-- Clip 2 - Phase Shift Escape: `artifacts/playwright/clip-phase-shift.gif`
-- Clip 3 - Ghost Chase: `artifacts/playwright/clip-ghost-chase.gif`
 
 ## Quick Start
 1. `pnpm install`
@@ -21,14 +16,16 @@
 
 ## How To Play
 - Move with Arrow keys.
-- Pause with `P`.
-- Reset with `R`.
-- Restart after game over with `Enter`.
+- Collect pellets while avoiding ghosts.
+- Press `P` to pause and resume.
+- Press `R` to reset instantly.
+- Press `Enter` to restart after win or game over.
 
 ## Rules
-- Eat pellets for points.
-- Avoid ghosts unless power mode is active.
-- Maze phase toggles open and close different lanes.
+- The maze alternates between Phase A and Phase B every 15 seconds.
+- Walls from the active phase block movement for player and ghosts.
+- Ghost collisions cost one life unless power mode is active.
+- Clearing every pellet wins the run.
 
 ## Scoring
 - Pellet: +10
@@ -36,17 +33,22 @@
 - Ghost while powered: +200
 
 ## Twist
-Dynamic maze shapes: the same map alternates between two lane configurations on a deterministic timer.
+Dynamic maze shapes: the board shifts between two deterministic layouts so lanes open and close on a known timer.
 
 ## Verification
-- Deterministic core checks: `pnpm test`
-- Build artifact generation: `pnpm build`
-- Browser capture + hook proof: `pnpm capture`
+- Deterministic loop checks: `pnpm test`
+- Build output generation: `pnpm build`
+- Browser hook and capture proof: `pnpm capture`
 
 ## Project Layout
-- `src/` game loop, rules, renderer, browser hooks
-- `tests/` unit tests and Playwright capture spec
-- `scripts/` build utility
+- `src/` deterministic rules, rendering, browser hooks
+- `tests/` unit tests and Playwright artifact capture
+- `scripts/` static build utility
 - `assets/` static assets
-- `docs/plans/` implementation plan
-- `artifacts/playwright/` capture outputs
+- `docs/plans/` run plan
+- `artifacts/playwright/` screenshots, GIF placeholders, action payload, render text
+
+## GIF Captures
+- Clip 1 - Opening Route: `artifacts/playwright/clip-opening.gif`
+- Clip 2 - Phase Shift Escape: `artifacts/playwright/clip-phase-shift.gif`
+- Clip 3 - Ghost Chase: `artifacts/playwright/clip-ghost-chase.gif`

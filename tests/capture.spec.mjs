@@ -19,8 +19,13 @@ test("capture deterministic gameplay artifacts", async ({ page }) => {
 
   await page.keyboard.press("ArrowRight");
   await page.evaluate(() => window.advanceTime(3200));
+  await page.keyboard.press("ArrowDown");
+  await page.evaluate(() => window.advanceTime(2200));
+
   const text = await page.evaluate(() => window.render_game_to_text());
   fs.writeFileSync("artifacts/playwright/render_game_to_text.txt", `${text}\n`);
+  expect(text).toMatch(/score=\d+/);
+  expect(text).toMatch(/phase=[AB]/);
 
   await page.screenshot({ path: "artifacts/playwright/board-initial.png", fullPage: true });
   await page.evaluate(() => window.advanceTime(2200));
