@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ms. Pac-Man Dynamic Maze Shapes</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" data-ui="game-shell">
+      <header>
+        <h1>Ms. Pac-Man: Dynamic Maze Shapes</h1>
+        <p>Collect pellets, dodge ghosts, and adapt as corridors shift.</p>
+      </header>
+      <section class="hud">
+        <div>Score: <span data-field="score">0</span></div>
+        <div>Lives: <span data-field="lives">3</span></div>
+        <div>Pellets: <span data-field="pellets">0</span></div>
+        <div>Phase: <span data-field="phase">A</span></div>
+        <div>Status: <span data-field="status">running</span></div>
+      </section>
+      <canvas id="game-canvas" width="544" height="608" aria-label="Game board"></canvas>
+      <p class="controls">Move: Arrow Keys | Pause: P | Reset: R | Restart after game over: Enter</p>
+      <div class="overlay" data-overlay="state" hidden></div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
